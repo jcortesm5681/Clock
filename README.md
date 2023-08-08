@@ -7,13 +7,13 @@ El programa es una aplicación desarrollada en Python utilizando la biblioteca P
 1. **Reloj Digital en Pantalla:**
    - El programa muestra en tiempo real la hora actual en formato de reloj digital.
    - Utiliza una fuente personalizada para simular un reloj de 7 segmentos.
-   - ![Descripción de la imagen](imgR.png)
+   - ![Descripción de la imagen](img/imgR.png)
 
 2. **Temporizador de Cuenta Regresiva:**
    - El usuario puede establecer un tiempo en horas, minutos o segundos para una cuenta regresiva.
    - La cuenta regresiva se muestra en pantalla en formato de reloj digital.
    - La cuenta regresiva disminuye cada segundo hasta llegar a cero.
-   - - ![Descripción de la imagen](imgT.png)
+   - - ![Descripción de la imagen](img/imgT.png)
 
 3. **Personalización:**
    - El usuario puede personalizar el tamaño de la fuente y el color del texto del reloj y la cuenta regresiva.
@@ -32,7 +32,7 @@ El programa es una aplicación desarrollada en Python utilizando la biblioteca P
 4. **Efectos Visuales:**
    - Cuando la cuenta regresiva llega a cero, se muestra el mensaje "Time's up!" en rojo.
    - El mensaje también vibra rápidamente en su lugar.
-   - - ![Descripción de la imagen](imgT2.png)
+   - - ![Descripción de la imagen](img/imgT2.png)
 
 5. **Notificación de Sonido:**
    - Cuando la cuenta regresiva llega a cero, se reproduce un sonido de alarma.
