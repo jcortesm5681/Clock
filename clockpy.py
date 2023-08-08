@@ -19,7 +19,7 @@ global vibration_frequency
 
 def Countdown(p, font_size, color):
     pygame.mixer.init()
-    alarm_sound= pygame.mixer.Sound("Bach.ogg")
+    alarm_sound= pygame.mixer.Sound("sonido/Bach.ogg")
     alarm_played= False
     font = pygame.font.SysFont("Digital-7 Mono", font_size) 
     vibration_amplitude = 10  # Amplitud de la vibracion en pixeles
