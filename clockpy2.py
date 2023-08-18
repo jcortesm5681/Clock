@@ -20,79 +20,9 @@ pygame.display.set_caption("Clock")
 global alarm_sound 
 global alarm_played 
 global vibration_amplitude 
-global vibration_frequency 
+global vibration_frequency
 
 
-def Countdown(p, font_size, color):
-    pygame.mixer.init()
-    alarm_sound= pygame.mixer.Sound("sonido/Bach.ogg")
-    alarm_played= False
-    font = pygame.font.SysFont("Digital-7 Mono", font_size) 
-    #font = pygame.font.SysFont("FlipclockBlack", font_size) 
-    vibration_amplitude = 10  # Amplitud de la vibracion en pixeles
-    vibration_frequency = 10  # Frecuencia de vibracion en Hz
-
-
-    clock = pygame.time.Clock()
-    global hou_ant 
-    global min_ant 
-    global sec_ant 
-    global sec_ant2
-    global sec_real
-    sec = dt.datetime.now().second   
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()    
-        s = pygame.Surface((window_width,window_height))  # tamano del cuadro
-        s.set_alpha(50)                # nivel alpha
-        s.fill((0,0,0))           # llena el cuadrado de color negro RGB(0,0,0)
-        screen.blit(s, (0,0))  
-        if p!=0 :
-            sec = dt.datetime.now().second   
-            if(sec!=sec_ant):
-                p -= 1
-                houInt = int(p / 3600)
-                minInt = (int(p / 60)) % 60
-                secInt = p % 60
-                sec_ant = sec   
-                sec = dt.datetime.now().second   
- 
-            time_text =str(houInt).zfill(2)  +":"+str(minInt).zfill(2)+":" +str(secInt).zfill(2) #str(hou).zfill(2)  +":"+str(min).zfill(2)+":" +str(sec).zfill(2)  #f"{str(hou).zfill(2)}:{str(min).zfill(2)}:{str(sec).zfill(2)}"
-            text = font.render(time_text, True, color)  
-            screen.blit(text, (window_width/2 - text.get_width()/2, window_height/2 - font_size/2 ))
-            
-        else:
-            text = font.render("00:00:00", True, color)  
-            screen.blit(text, (window_width/2 - text.get_width()/2, window_height/2 - font_size/2 ))
-            #font2 = pygame.font.SysFont("Tippa", 30) 
-            font2 = pygame.font.SysFont("Punktype", 50) 
-            text = font2.render("Time's up!", True, (255,0,0))  
-            #screen.blit(text, (window_width/2- text.get_width()/2, window_height/2 + font_size/2 )) 
-
-            # Calcular el desplazamiento horizontal y vertical basado en el tiempo
-            vibration_offset_x = vibration_amplitude * math.sin(pygame.time.get_ticks() * 2 * math.pi * vibration_frequency / 1000)
-            vibration_offset_y = vibration_amplitude * math.cos(pygame.time.get_ticks() * 2 * math.pi * vibration_frequency / 1000)
-            
-            # Calcular la posicion actual del texto
-            text_position = (window_width/2 - text.get_width()/2 + vibration_offset_x, window_height/2 + font_size/2 + vibration_offset_y)
-            
-            # Dibujar el texto en la pantalla
-            screen.blit(text, text_position)
-    
-            #alarm_sound.play()
-            if not alarm_played:  # Verifica si el sonido aun no se ha reproducido
-                alarm_sound.play()  # Reproduce el sonido de la alarma
-                alarm_played = True  # Cambia la variable para que no se reproduzca nuevamente
-    
-        pygame.display.flip()
-        clock.tick(20)
-        
-        
-
- 
 
 def clockjac(font_size, color):
     #font_size = 100
