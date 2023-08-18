@@ -83,9 +83,6 @@ def Countdown(p, font_size, color):
         pygame.display.flip()
         clock.tick(20)
         
-        
-
- 
 
 def clockjac(font_size, color):
     #font_size = 100
@@ -116,6 +113,60 @@ def clockjac(font_size, color):
         screen.blit(text, (window_width/2 - text.get_width()/2, window_height/2 - font_size/2 ))
         pygame.display.flip()
         clock.tick(20)  # Actualiza la pantalla una vez por segundo
+
+
+
+def clockjac2(font_size2, color2):
+    #font_size = 100
+    screen= pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    #window_width = 800
+    #window_height = 600
+    info = pygame.display.Info()
+    window_width = info.current_w
+    window_height = info.current_h
+    
+    
+    #font = pygame.font.SysFont("Tippa", font_size)
+    clock = pygame.time.Clock()
+    terminado = False
+    while not terminado:
+        font = pygame.font.SysFont("Impact", font_size2) #
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                terminado = True
+            elif evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_q or evento.key == pygame.K_ESCAPE:
+                    # Si se presiona la tecla "q"; terminar programa
+                    terminado = True
+                if evento.key == pygame.K_PLUS or evento.key == pygame.K_KP_PLUS:
+                    font_size2=font_size2+50
+                if font_size2 >= 600: font_size2= 600
+                if evento.key == pygame.K_MINUS or evento.key == pygame.K_KP_MINUS:
+                    font_size2=font_size2-50
+                if font_size2 <= 300: font_size2= 300
+        
+        min = dt.datetime.now().minute
+        hou = dt.datetime.now().strftime("%I") # Hora en formato 12h con ceros a la izquierda
+        
+        #screen.fill((0, 0, 0))  # Limpia la pantalla con color negro
+        s = pygame.Surface((window_width,window_height))  # tamano del cuadro
+        s.set_alpha(50)                # nivel alpha
+        s.fill((0,0,0))           # llena el cuadrado de color negro RGB(0,0,0)
+        screen.blit(s, (0,0))  
+
+        # Muestra el tiempo en la ventana 
+        #time_text =str(hou).zfill(2)  +"  "+str(min).zfill(2)
+        text1 = font.render(hou, True, color2)  
+        text2 = font.render(str(min).zfill(2), True, color2)
+        screen.blit(text1, (window_width/2 -(font_size2 + 100), window_height/2 - font_size2/1.5))
+        screen.blit(text2, (window_width/4 +font_size2, window_height/2 - font_size2/1.5))
+        #print(window_width/4 - font_size, window_height/2 - font_size/1.5 )
+        # Dibujar el cuadro
+        pygame.draw.rect(screen, (0,0,0), (0, window_height/2 -font_size2/10, window_width, 10))  # El ?ltimo argumento es el grosor del borde
+    
+     
+        pygame.display.flip()
+        clock.tick(20)  # Actualiza la pantalla 
 
 
 
@@ -155,20 +206,24 @@ else:
         elif  n=="-h":
             lossegundos=lossegundos+(int(sys.argv[y])*3600)
         elif  n=="-f":
-              tamanio=int(sys.argv[y]) # parametro para tameno de fuente, por defecto 100
+            tamanio=int(sys.argv[y]) # parametro para tameno de fuente, por defecto 100
         elif  n=="-c":
-              #col=sys.argv[y] # parametro para tameno de fuente, por defecto color red
-              col= (sys.argv[y]).lstrip('#')
+            #col=sys.argv[y] # parametro para tameno de fuente, por defecto color red
+            col= (sys.argv[y]).lstrip('#')
             #print('h =',h)
-              color=tuple(int(col[i:i+2], 16) for i in (0, 2, 4))
+            color=tuple(int(col[i:i+2], 16) for i in (0, 2, 4))
         elif  n=="-t":
               titulovent=sys.argv[y] # parametro para nombre. por defecto "CLOCK"
               pygame.display.set_caption(titulovent)
-
-        elif  n=="--help" :
+        elif n=="--o":
+            #clockjac2(450, (183,183,183))
+            lossegundos=-1
+        elif  n=="--help" :  
             print("Modo de empleo: Clock [opciones]...")
             print("")           
             print("Programa de consola que genera una cuenta regresiva o un reloj digital, simulando display de 7 segmentos, Para eso utiliza la fuente \"Digital-7\"; la cual hay que instalar en el sistema.")
+            print("")            
+            print("con la opci?n --o se crea un reloj flip a pantalla completa")
             print("")
             print("Las siguientes opciones activan una cuenta regresiva:")
             print("-s   Segundos a contar hacia atras")
@@ -179,6 +234,12 @@ else:
             print("")
             print("clock -m 5 -s 10")
             print("Crea una cuenta regresiva de 5 minutos y 10 segundos")
+            print("")
+            print("clock --o")
+            print("Crea un reloj flip, no efectiva con otras opciones, ")
+            print(" q   para salir")
+            print(" +   para aumentar la velocidad")
+            print(" -   para disminuir la velocidad")
             print("")
             print("Si no se encuentran esas opciones se activa un reloj digital que marca la hora del sistema")
             print("")
@@ -210,6 +271,8 @@ else:
 
     if lossegundos == 0:
         clockjac(font_size, color)
+    elif lossegundos==-1:
+        clockjac2(450, (183,183,183))
     else:
         Countdown(lossegundos + 1, font_size, color)
 
