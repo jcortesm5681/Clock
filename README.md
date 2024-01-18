@@ -8,7 +8,7 @@ El programa es una aplicación desarrollada en Python utilizando la biblioteca P
    - El programa muestra en tiempo real la hora actual en formato de reloj digital.
    - Utiliza una fuente personalizada para simular un reloj de 7 segmentos.
     ![Descripción de la imagen](img/imgR.png)
-   - Con la opción --o se muestra un auntiguo reloj flip
+   - Con la opción -o se muestra un antiguo reloj flip
     ![Descripción de la imagen](img/imgFlip.png)   
 
 
