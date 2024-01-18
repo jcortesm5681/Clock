@@ -22,15 +22,46 @@ El programa es una aplicación desarrollada en Python utilizando la biblioteca P
    - El usuario puede personalizar el tamaño de la fuente y el color del texto del reloj y la cuenta regresiva.
    - También se puede cambiar el título de la ventana de la aplicación.
 
-  Ejemplo:
+     OPCIONES DE RELOJ
 
-    clock -c "#e2943a" -f 150 -h 3 -t Detonador
-    
-    clock -c "#e2943a" -f 150 -t HoraActual
+      clock -d
+      Crea un reloj digital, opción por defecto si no se especifica otra cosa
+      clock -o
+      Crea un reloj flipflop,
+      
+      Ejemplo:
+      
+      clock -o -t 400 -f
+      Crea reloj flip flop,  tamaño de fuente 400 y a pantalla completa
+      
+      clock -c "#e2943a" -f -t 200 -ti HoraActual
+      Crea un reloj color ambar, a pantalla completa con hora de sistema, fuente tamano 200,  y titulo de la ventana "HoraActual"
+      OPCIONES DE CUENTA REGRESIVA
+      
+      Las siguientes opciones activan una cuenta regresiva:
+      -s   Segundos a contar hacia atras
+      -m   Minutos a contar hacia atras
+      -h   Horas a contar hacia atras
+      
+      Ejemplo:
+      
+      clock -m 5 -s 10
+      Crea una cuenta regresiva de 5 minutos y 10 segundos
+      
+      Ejemplo 2:
+      
+      clock -h 3 -c "#e2943a" -t 150  -ti Detonador
+      Crea una cuenta regresiva de tres horas, color ambar, con fuente tamano 150, y titulo de la ventana "Detonador"
+      
+      
+      DURANTE LA EJECUCION
+      presionar
+       f   para alternar entre pantalla completa o ventana
+       q   para salir
+       +   para aumentar tamaño de la fuente
+       -   para disminuir tamaño de la fuente
 
-   - El primero crea una cuenta hacia atras de tres horas con fuente tamano 150, color ambar, y titulo de la ventana "Detonador"
-   - El segundo crea un reloj con hora de sistema, fuente tamano 150, color ambar, y titulo de la ventana "HoraActual"
-     
+ 
 
 4. **Efectos Visuales:**
    - Cuando la cuenta regresiva llega a cero, se muestra el mensaje "Time's up!" en rojo.
