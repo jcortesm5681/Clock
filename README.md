@@ -25,17 +25,21 @@ El programa es una aplicación desarrollada en Python utilizando la biblioteca P
      OPCIONES DE RELOJ
 
       ```clock -d ```
+     
       Crea un reloj digital, opción por defecto si no se especifica otra cosa
      
       ```clock -o ```
+     
       Crea un reloj flipflop,
       
       Ejemplo:
       
       ```clock -o -t 400 -f ```
+     
       Crea reloj flip flop,  tamaño de fuente 400 y a pantalla completa
       
       ```clock -c "#e2943a" -f -t 200 -ti HoraActual ```
+     
       Crea un reloj color ambar, a pantalla completa con hora de sistema, fuente tamano 200,  y titulo de la ventana "HoraActual"
       OPCIONES DE CUENTA REGRESIVA
       
@@ -47,11 +51,13 @@ El programa es una aplicación desarrollada en Python utilizando la biblioteca P
       Ejemplo:
       
       ``` clock -m 5 -s 10```
+     
       Crea una cuenta regresiva de 5 minutos y 10 segundos
       
       Ejemplo 2:
       
       ```clock -h 3 -c "#e2943a" -t 150  -ti Detonador ```
+     
       Crea una cuenta regresiva de tres horas, color ambar, con fuente tamano 150, y titulo de la ventana "Detonador"
       
       
